@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import './variables.dart';
-import './reuse_icon_text.dart';
-import './reuse_container.dart';
-
-Variables variable = Variables();
-final darkBlue = variable.darkBlue;
-final darkGrey = variable.darkGrey;
+import './import.dart';
 
 enum Gender { male, female, none }
 
@@ -16,8 +8,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = darkBlue;
-  Color femaleCardColor = darkBlue;
+  Color maleCardColor = kDarkBlue;
+  Color femaleCardColor = kDarkBlue;
 
   Gender selectedGender = Gender.none;
 
@@ -33,39 +25,57 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                  child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedGender = Gender.male;
-                  });
-                },
                 child: ReuseContainer(
-                    selectedGender == Gender.male ? darkGrey : darkBlue,
-                    ReuseIconText(FontAwesomeIcons.mars, 'MALE')),
-              )),
+                  selectedGender == Gender.male ? kDarkGrey : kDarkBlue,
+                  ReuseIconText(FontAwesomeIcons.mars, 'MALE'),
+                  () => {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    })
+                  },
+                )
+              ),
               Expanded(
-                  child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedGender = Gender.female;
-                  });
-                },
                 child: ReuseContainer(
-                    selectedGender == Gender.female ? darkGrey : darkBlue,
-                    ReuseIconText(FontAwesomeIcons.venus, 'FEMALE')),
-              ))
+                  selectedGender == Gender.female ? kDarkGrey : kDarkBlue,
+                  ReuseIconText(FontAwesomeIcons.venus, 'FEMALE'),
+                  () => {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    })
+                  },
+                )
+              )
             ],
           )),
-          Expanded(child: ReuseContainer(darkBlue, Container())),
+          Expanded(child: ReuseContainer(kDarkBlue, Container(),
+                () => {
+              setState(() {
+                print('middle button');
+              })
+            },
+          )),
           Expanded(
               child: Row(
             children: <Widget>[
-              Expanded(child: ReuseContainer(darkBlue, Container())),
-              Expanded(child: ReuseContainer(darkBlue, Container()))
+              Expanded(child: ReuseContainer(kDarkBlue, Container(),
+                    () => {
+                  setState(() {
+                    print('bootom left button');
+                  })
+                },
+              )),
+              Expanded(child: ReuseContainer(kDarkBlue, Container(),
+                    () => {
+                  setState(() {
+                    print('bottom right button');
+                  })
+                },
+              ))
             ],
           )),
           Container(
-            color: variable.darkPink,
+            color: kDarkPink,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: 40.0,

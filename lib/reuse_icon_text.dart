@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import './variables.dart';
-
-Variables variable = Variables();
+import './import.dart';
 
 class ReuseIconText extends StatelessWidget {
   final IconData customIcon;
@@ -21,10 +18,7 @@ class ReuseIconText extends StatelessWidget {
         SizedBox(height: 15.0),
         Text(
           labelText,
-          style: TextStyle(
-              fontSize: 18.0,
-              color: variable.lightGrey
-          ),
+          style: labelTextStyle,
         )
       ],
     );
