@@ -8,7 +8,7 @@ Variables variable = Variables();
 final darkBlue = variable.darkBlue;
 final darkGrey = variable.darkGrey;
 
-enum Gender {male, female}
+enum Gender { male, female, none }
 
 class InputPage extends StatefulWidget {
   @override
@@ -16,92 +16,62 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Color maleCardColor = darkBlue;
   Color femaleCardColor = darkBlue;
 
-  // Gender selectedGender;
-
-  void updateColor(slectedGender) {
-    if(slectedGender == Gender.male) {
-      maleCardColor =  maleCardColor == darkBlue ? darkGrey : darkBlue;
-      femaleCardColor = maleCardColor == darkBlue ? darkGrey : darkBlue;
-    } else {
-      maleCardColor =  femaleCardColor == darkBlue ? darkGrey : darkBlue;
-      femaleCardColor = femaleCardColor == darkBlue ? darkGrey : darkBlue;
-    }
-  }
+  Gender selectedGender = Gender.none;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
-        ),
-        body: Column(
-          children: <Widget>[
-            Expanded(
+      appBar: AppBar(
+        title: Text('BMI CALCULATOR'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
               child: Row(
-              children: <Widget>[
-                Expanded(
+            children: <Widget>[
+              Expanded(
                   child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        // selectedGender = Gender.male;
-                        updateColor(Gender.male);
-                      });
-                    },
-                    child: ReuseContainer(
-                        maleCardColor,
-                        ReuseIconText(
-                        FontAwesomeIcons.mars,
-                        'MALE'
-                    )
-                ),
-                  )),
-                Expanded(
+                onTap: () {
+                  setState(() {
+                    selectedGender = Gender.male;
+                  });
+                },
+                child: ReuseContainer(
+                    selectedGender == Gender.male ? darkGrey : darkBlue,
+                    ReuseIconText(FontAwesomeIcons.mars, 'MALE')),
+              )),
+              Expanded(
                   child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        // selectedGender = Gender.female;
-                        updateColor(Gender.male);
-                      });
-                    },
-                    child: ReuseContainer(
-                        femaleCardColor,
-                        ReuseIconText(
-                        FontAwesomeIcons.venus,
-                        'FEMALE'
-                    )
-                ),
-                  ))
-              ],
-            )),
-            Expanded(
-              child: ReuseContainer(
-                darkBlue, Container()
-            )),
-            Expanded(
+                onTap: () {
+                  setState(() {
+                    selectedGender = Gender.female;
+                  });
+                },
+                child: ReuseContainer(
+                    selectedGender == Gender.female ? darkGrey : darkBlue,
+                    ReuseIconText(FontAwesomeIcons.venus, 'FEMALE')),
+              ))
+            ],
+          )),
+          Expanded(child: ReuseContainer(darkBlue, Container())),
+          Expanded(
               child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: ReuseContainer(
-                    darkBlue, Container()
-                )),
-                Expanded(
-                  child: ReuseContainer(
-                    darkBlue, Container()
-                ))
-              ],
-            )),
-            Container(
-              color: variable.darkPink,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: 40.0,
-            ),
-          ],
-        ),
+            children: <Widget>[
+              Expanded(child: ReuseContainer(darkBlue, Container())),
+              Expanded(child: ReuseContainer(darkBlue, Container()))
+            ],
+          )),
+          Container(
+            color: variable.darkPink,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: 40.0,
+          ),
+        ],
+      ),
     );
   }
 }
