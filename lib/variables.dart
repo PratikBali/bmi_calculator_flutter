@@ -5,6 +5,7 @@ const kNormalPink = Color(0xFFEB1555);
 const kDarkPink = Color(0x29EB1555);
 const kLightGrey = Color(0xFF8D8E98);
 const kDarkGrey = Color(0xFF111328);
+const kNormalGrey = Color(0Xff4C4f5E);
 const kMaterialBlack = Colors.black;
 
 const kLabelTextStyle = TextStyle(

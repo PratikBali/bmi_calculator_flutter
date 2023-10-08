@@ -4,3 +4,4 @@ export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export './variables.dart';
 export './reuse_container.dart';
 export './reuse_icon_text.dart';
+export './round_icon_button.dart';
