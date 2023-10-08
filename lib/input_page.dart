@@ -11,6 +11,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.none;
   int height = 180;
   int weight = 60;
+  int age = 30;
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +92,10 @@ class _InputPageState extends State<InputPage> {
             },
           )),
           Expanded(
-              child: Row(
+            child: Row(
             children: <Widget>[
               Expanded(
-                  child: ReuseContainer(
+                child: ReuseContainer(
                 kDarkBlue,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -130,22 +131,50 @@ class _InputPageState extends State<InputPage> {
                     )
                   ],
                 ),
-                () => {
-                  setState(() {
-                    print('bootom left button');
-                  })
-                },
+                () => {},
               )),
               Expanded(
-                  child: ReuseContainer(
-                kDarkBlue,
-                Container(),
-                () => {
-                  setState(() {
-                    print('bottom right button');
-                  })
-                },
-              ))
+                child: ReuseContainer(
+                  kDarkBlue,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'AGE',
+                        style: kLabelTextStyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          RoundIconButton(
+                            FontAwesomeIcons.minus,
+                            () {
+                              setState(
+                                () {
+                                  age--;
+                                },
+                              );
+                            },
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          RoundIconButton(FontAwesomeIcons.plus, () {
+                            setState(() {
+                              age++;
+                            });
+                          })
+                        ],
+                      )
+                    ],
+                  ),
+                  () => {},
+                )
+              )
             ],
           )),
           Container(
