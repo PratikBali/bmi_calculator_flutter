@@ -18,7 +18,7 @@ class ReuseIconText extends StatelessWidget {
         SizedBox(height: 15.0),
         Text(
           labelText,
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         )
       ],
     );
