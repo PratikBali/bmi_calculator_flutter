@@ -1,4 +1,4 @@
-import './import.dart';
+import '../import.dart';
 
 enum Gender { male, female, none }
 
@@ -100,25 +100,20 @@ class _InputPageState extends State<InputPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      'WEIGHT',
-                      style: kLabelTextStyle,
-                    ),
-                    Text(
-                      weight.toString(),
-                      style: kNumberTextStyle,
-                    ),
+                    Text('WEIGHT', style: kLabelTextStyle),
+                    Text(weight.toString(),style: kNumberTextStyle),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        RoundIconButton(FontAwesomeIcons.minus, () {
-                          setState(() {
-                            weight--;
-                          });
-                        }),
-                        SizedBox(
-                          width: 10.0,
+                        RoundIconButton(
+                          FontAwesomeIcons.minus,
+                          () {
+                            setState(() {
+                              weight--;
+                            });
+                          }
                         ),
+                        SizedBox(width: 10.0),
                         RoundIconButton(
                           FontAwesomeIcons.plus,
                           () {
@@ -177,11 +172,23 @@ class _InputPageState extends State<InputPage> {
               )
             ],
           )),
-          Container(
-            color: kNormalPink,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: 40.0,
+          BottomButton(
+            'CALCULATE',
+            () {
+              CalculatorBrain calc =
+              CalculatorBrain(height, weight);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(
+                    calc.calculateBMI(),
+                    calc.getResult(),
+                    calc.getInterpretation(),
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),

@@ -1,4 +1,4 @@
-import './import.dart';
+import '../import.dart';
 
 class ReuseContainer extends StatelessWidget {
   final Color colour;

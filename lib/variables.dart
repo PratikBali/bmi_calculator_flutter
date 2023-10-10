@@ -7,6 +7,8 @@ const kLightGrey = Color(0xFF8D8E98);
 const kDarkGrey = Color(0xFF111328);
 const kNormalGrey = Color(0Xff4C4f5E);
 const kMaterialBlack = Colors.black;
+const kBottomContainerColour = Color(0Xff4C4f5E);
+const kBottomContainerHeight = 60.0;
 
 const kLabelTextStyle = TextStyle(
     fontSize: 18.0,

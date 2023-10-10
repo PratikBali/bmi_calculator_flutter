@@ -1,7 +1,10 @@
 export 'package:flutter/material.dart';
-export './input_page.dart';
+export 'screens/input_page.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export './variables.dart';
-export './reuse_container.dart';
-export './reuse_icon_text.dart';
-export './round_icon_button.dart';
+export 'components/reuse_container.dart';
+export 'components/reuse_icon_text.dart';
+export 'components/round_icon_button.dart';
+export './calculator_brain.dart';
+export 'screens/results_page.dart';
+export 'components/bottom_button.dart';

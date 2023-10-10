@@ -1,9 +1,9 @@
 import 'dart:math';
 
 class CalculatorBrain {
-
   final int height;
   final int weight;
+
   CalculatorBrain(this.height, this.weight);
 
   double _bmi = 0.0;
